@@ -1,11 +1,12 @@
+load("@rules_python//python:defs.bzl", "py_test")
 load("@rules_python//python:py_library.bzl", "py_library")
 
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
-    deps = [],
-    visibility = ["//projects/my-python-app:__pkg__"],
     imports = ["."],
+    visibility = ["//projects/my-python-app:__pkg__"],
+    deps = [],
 )
 
 py_test(
@@ -13,5 +14,5 @@ py_test(
     srcs = ["calculator_test.py"],
     deps = [
         ":calculator",
-    ]
+    ],
 )

@@ -1,10 +1,18 @@
-load("@rules_go//go:def.bzl", "go_binary")
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
 
 go_binary(
     name = "go_web",
+    embed = [":go_web_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "go_web_lib",
     srcs = ["main.go"],
+    importpath = "github.com/racosta/multi-language-bazel-monorepo/projects/go_web",
+    visibility = ["//visibility:private"],
     deps = [
-        "//projects/go_hello_world:go_hello_world",
+        "//projects/go_hello_world",
         "@com_github_gorilla_mux//:mux",
     ],
 )
