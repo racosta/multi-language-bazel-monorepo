@@ -18,3 +18,7 @@ repos:
   rev: v0.14.0
   hooks:
   - id: yamlfmt
+- repo: https://github.com/jorisroovers/gitlint
+  rev: v0.19.1
+  hooks:
+  - id: gitlint

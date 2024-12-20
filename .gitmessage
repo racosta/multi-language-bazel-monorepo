@@ -1,0 +1,10 @@
+# Title: Summary, imperative, don't end with a period
+# Use Conventional Commits type:
+# [fix,feat,chore,docs,style,refactor,perf,test,revert,ci,build]
+# <type>: <description>
+# No more than 100 chars. #### 100 chars is here:                                                  #
+
+# Remember blank line between title and body.
+
+# Body: Explain *what* and *why* (not *how*).
+# Wrap at 100 chars. ################################## which is here:                             #
