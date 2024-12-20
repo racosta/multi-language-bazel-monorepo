@@ -13,6 +13,6 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//projects/go_hello_world",
-        "@com_github_gorilla_mux//:mux",
+        "@com_github_gin_gonic_gin//:gin",
     ],
 )
