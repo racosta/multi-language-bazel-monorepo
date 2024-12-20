@@ -4,7 +4,8 @@ py_library(
     name = "calculator",
     srcs = ["calculator.py"],
     deps = [],
-    visibility = ["//visibility:public"],
+    visibility = ["//projects/my-python-app:__pkg__"],
+    imports = ["."],
 )
 
 py_test(
