@@ -4,21 +4,27 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 	"github.com/racosta/multi-language-bazel-monorepo/projects/go_hello_world"
 )
 
-func YourHandler(w http.ResponseWriter, r *http.Request) {
+func RootHandler(c *gin.Context) {
 	log.Println("Received request")
-	w.Write([]byte(go_hello_world.HelloWorld()))
+	c.JSON(http.StatusOK, gin.H{
+		"message": go_hello_world.HelloWorld(),
+	})
 }
 
 func main() {
-	r := mux.NewRouter()
-	// Routes consist of a path and a handler function
-	r.HandleFunc("/", YourHandler)
+	r := gin.Default()
+
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(http.StatusOK, "pong")
+	})
+
+	r.GET("/", RootHandler)
 
 	// Bind to a port and pass our router in
-	log.Println("Going to listen on port 8000")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Println("Going to listen on port 8080")
+	log.Fatal(r.Run(":8080"))
 }

@@ -16,6 +16,7 @@ pkgs.mkShell {
     difftastic
     eza
     go
+    golangci-lint
     jq
     just
     kondo

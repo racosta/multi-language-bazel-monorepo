@@ -59,5 +59,6 @@ go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
 go_deps.from_file(go_work = "//:go.work")
 use_repo(
     go_deps,
-    "com_github_gorilla_mux",
+    "com_github_gin_gonic_gin",
+    "com_github_racosta_multi_language_bazel_monorepo_projects_go_hello_world",
 )
