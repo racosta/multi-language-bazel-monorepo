@@ -5,7 +5,7 @@ py_library(
     name = "calculator",
     srcs = ["calculator.py"],
     imports = ["."],
-    visibility = ["//projects/my-python-app:__pkg__"],
+    visibility = ["//projects/python_web:__pkg__"],
     deps = [],
 )
 
