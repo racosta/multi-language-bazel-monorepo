@@ -1,0 +1,10 @@
+load("@rules_go//go:def.bzl", "go_binary")
+
+go_binary(
+    name = "go_web",
+    srcs = ["main.go"],
+    deps = [
+        "//projects/go_hello_world:go_hello_world",
+        "@com_github_gorilla_mux//:mux",
+    ],
+)
