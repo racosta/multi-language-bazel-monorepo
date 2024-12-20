@@ -1,6 +1,6 @@
-load("@python//3.9:defs.bzl", compile_pip_requirements_3_9 = "compile_pip_requirements")
 load("@python//3.10:defs.bzl", compile_pip_requirements_3_10 = "compile_pip_requirements")
 load("@python//3.11:defs.bzl", compile_pip_requirements_3_11 = "compile_pip_requirements")
+load("@python//3.9:defs.bzl", compile_pip_requirements_3_9 = "compile_pip_requirements")
 
 compile_pip_requirements_3_9(
     name = "requirements_3_9",
