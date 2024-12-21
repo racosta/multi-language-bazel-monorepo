@@ -14,6 +14,7 @@ pkgs.mkShell {
     bazel_7 # Only available with 6.5.0
     bazel-buildtools
     difftastic
+    direnv
     eza
     go
     golangci-lint
@@ -35,6 +36,10 @@ pkgs.mkShell {
 
   shellHook = ''
     alias ls='eza --icons'
+
+    eval "$(direnv hook bash)"
+
+    direnv allow .
 
     eval "$(starship init bash)"
   '';

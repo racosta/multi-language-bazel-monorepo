@@ -8,10 +8,13 @@ module(
 bazel_dep(name = "aspect_bazel_lib", version = "2.8.1")
 bazel_dep(name = "aspect_rules_jest", version = "0.22.0")
 bazel_dep(name = "aspect_rules_js", version = "2.1.2")
+bazel_dep(name = "bazel_env.bzl", version = "0.1.1")
 bazel_dep(name = "gazelle", version = "0.40.0")
 bazel_dep(name = "rules_go", version = "0.50.1")
 bazel_dep(name = "rules_nodejs", version = "6.3.2")
 bazel_dep(name = "rules_python", version = "1.0.0")
+bazel_dep(name = "rules_rust", version = "0.56.0")
+
 
 # Python
 
@@ -99,3 +102,25 @@ pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
 # Allows developers to use the matching pnpm version, for example:
 # bazel run -- @pnpm --dir /home/runner/work/rules_js/rules_js install
 use_repo(pnpm, "pnpm")
+
+# Rust
+
+rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
+rust.toolchain(edition = "2021")
+use_repo(rust, "rust_toolchains")
+
+register_toolchains(
+    "@rust_toolchains//:all",
+)
+
+crate = use_extension(
+    "@rules_rust//crate_universe:extensions.bzl",
+    "crate",
+)
+crate.from_cargo(
+    name = "crates",
+    cargo_lockfile = "//third_party/rust:Cargo.lock",
+    manifests = ["//third_party/rust:Cargo.toml"],
+)
+use_repo(crate, "crates")
+
