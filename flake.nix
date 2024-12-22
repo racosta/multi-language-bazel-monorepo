@@ -51,6 +51,7 @@
             shellHook = ''
               alias ls='eza --icons'
 
+              # This part isn't having an effect because of the way that the shell is created
               eval "$(starship init bash)"
             '';
           };
