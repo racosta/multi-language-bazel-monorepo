@@ -10,11 +10,10 @@
 pkgs.mkShell {
   packages = with pkgs; [
     bat
-    # Install bazel externally using a different tool so that version 8.x is used.
-    bazel_7 # Only available with 6.5.0
+    bazel_7
     bazel-buildtools
     difftastic
-    direnv
+    #direnv
     eza
     go
     golangci-lint
@@ -37,9 +36,8 @@ pkgs.mkShell {
   shellHook = ''
     alias ls='eza --icons'
 
-    eval "$(direnv hook bash)"
-
-    direnv allow .
+    #eval "$(direnv hook bash)"
+    #direnv allow .
 
     eval "$(starship init bash)"
   '';
